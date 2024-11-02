@@ -1,3 +1,9 @@
-# IOTN8
-setup : + npm i 
-        + localhost:8386
+
+## Installation
+
+Install IOTN8 with npm
+
+```bash
+  cd IOTN8
+  npm install 
+```
