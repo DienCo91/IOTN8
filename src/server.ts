@@ -1,6 +1,6 @@
 import app from '.'
-
 import dotenv from 'dotenv'
+import mongoose from 'mongoose'
 import path from 'path'
 
 dotenv.config({ path: path.join(__dirname, process.env.ENVFILE || '') })
@@ -10,6 +10,10 @@ process.on('uncaughtException', (error: Error) => {
   server.close(() => {
     process.exit(1)
   })
+})
+
+mongoose.connect(process.env.CONN_STR || '').then((connection) => {
+  console.log('Successfully connected')
 })
 
 const server = app.listen(process.env.PORT, () => {
