@@ -1,21 +1,15 @@
 import { Request, Response } from 'express'
-import Person from '~/models/database/Person'
+import Persons from '~/models/database/Persons'
 import { MongoError } from '~/types/types'
 
 export const helloUser = async (req: Request, res: Response): Promise<void> => {
-  const persons = await Person.find()
+  const persons = await Persons.find()
   res.status(200).json(persons)
 }
 
 export const signIn = async (req: Request, res: Response): Promise<void> => {
   try {
-    const user = {
-      username: 'Administrator',
-      password: '123123123',
-      fullName: 'Administrator'
-    }
-
-    const person = await Person.create(user)
+    const person = await Persons.create(req.body)
     res.status(200).json(person)
   } catch (error) {
     if (error && typeof error === 'object' && 'code' in error) {
@@ -42,6 +36,6 @@ export const signIn = async (req: Request, res: Response): Promise<void> => {
       }
     }
 
-    res.status(400).json({ message: 'Có lỗi xảy ra, vui lòng thử lại sau.' })
+    res.status(400).json({ error })
   }
 }

@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-const PersonSchema = new mongoose.Schema({
+const PersonsSchema = new mongoose.Schema({
   username: {
     type: String,
     minlength: [3, 'Movies must have at least 4 characters'],
@@ -26,6 +26,6 @@ const PersonSchema = new mongoose.Schema({
   list_chat: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Chat' }]
 })
 
-const Person = mongoose.model('Person', PersonSchema)
+const Persons = mongoose.model('Persons', PersonsSchema)
 
-export default Person
+export default Persons

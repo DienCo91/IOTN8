@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-const ChatSchema = new mongoose.Schema({
+const ChatsSchema = new mongoose.Schema({
   request: {
     type: String
   },
@@ -11,14 +11,14 @@ const ChatSchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   },
-  person_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Person' }
+  person_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Persons' }
 })
 
-ChatSchema.pre('save', function (next) {
+ChatsSchema.pre('save', function (next) {
   this.time = new Date()
   next()
 })
 
-const Chat = mongoose.model('Chat', ChatSchema)
+const Chats = mongoose.model('Chats', ChatsSchema)
 
-export default Chat
+export default Chats

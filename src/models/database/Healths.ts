@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-const HealthSchema = new mongoose.Schema({
+const HealthsSchema = new mongoose.Schema({
   heart_rate: {
     type: String
   },
@@ -14,14 +14,14 @@ const HealthSchema = new mongoose.Schema({
     type: Date,
     default: Date.now()
   },
-  person_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Person' }
+  person_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Persons' }
 })
 
-HealthSchema.pre('save', function (next) {
+HealthsSchema.pre('save', function (next) {
   this.time = new Date()
   next()
 })
 
-const Health = mongoose.model('Health', HealthSchema)
+const Healths = mongoose.model('Healths', HealthsSchema)
 
-export default Health
+export default Healths
