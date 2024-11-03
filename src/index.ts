@@ -3,6 +3,7 @@ import cors from 'cors'
 import morgan from 'morgan'
 import user from './routes/users.routes'
 import health from './routes/healths.routes'
+import chat from './routes/chats.routes'
 import swaggerJsdoc from 'swagger-jsdoc'
 import swaggerUi from 'swagger-ui-express'
 import { options } from './utils/swaggerJsOptions'
@@ -18,6 +19,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs, { explorer: true })
 
 app.use('/user', user)
 app.use('/health', health)
+app.use('/chat', chat)
 
 app.use(handleErrorGlobal)
 
