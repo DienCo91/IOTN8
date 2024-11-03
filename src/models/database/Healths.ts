@@ -2,19 +2,19 @@ import mongoose from 'mongoose'
 
 const HealthsSchema = new mongoose.Schema({
   heart_rate: {
-    type: String
+    type: Number,
+    required: [true, 'heart_rate is required']
   },
   spo2: {
-    type: String,
-    required: [true, 'Password is required'],
-    minlength: [8, 'Password must be at least 8 characters'],
-    select: false
+    type: Number,
+    required: [true, 'spo2 is required'],
+    minlength: [8, 'Password must be at least 8 characters']
   },
   time: {
     type: Date,
     default: Date.now()
   },
-  person_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Persons' }
+  person_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Persons', required: true }
 })
 
 HealthsSchema.pre('save', function (next) {
