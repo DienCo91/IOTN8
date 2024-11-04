@@ -1,17 +1,15 @@
 import mongoose from 'mongoose'
 
 const ChatsSchema = new mongoose.Schema({
-  request: {
-    type: String
-  },
-  response: {
+  name: {
     type: String
   },
   time: {
     type: Date,
     default: Date.now
   },
-  person_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Persons' }
+  persons: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Persons' }],
+  messages: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Messages' }]
 })
 
 ChatsSchema.pre('save', function (next) {

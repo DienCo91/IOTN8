@@ -22,8 +22,8 @@ const PersonsSchema = new mongoose.Schema({
   IOTToken: {
     type: String
   },
-  list_health: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Health' }],
-  list_chat: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Chat' }]
+  list_health: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Healths' }],
+  list_chat: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Chats' }]
 })
 
 const Persons = mongoose.model('Persons', PersonsSchema)
